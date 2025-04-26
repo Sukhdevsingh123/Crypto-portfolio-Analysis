@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Portfolio AI</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Crypto Portfolio AI Dashboard</h1>
+  <canvas id="portfolioChart"></canvas>
+  <canvas id="volatilityChart"></canvas>
+  <script>
+    // Placeholder: Fetch real data from server
+    const portfolioData = {
+      labels: ['2025-03-25', '2025-04-01', '2025-04-24'],
+      values: [10000, 10500, 10924]
+    };
+    const volatilityData = {
+      labels: ['BTC/USD', 'LTC/USD'],
+      values: [30.15, 25.50]
+    };
+
+    new Chart(document.getElementById('portfolioChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: portfolioData.labels,
+        datasets: [{
+          label: 'Portfolio Value',
+          data: portfolioData.values,
+          borderColor: 'blue',
+          fill: false
+        }]
+      }
+    });
+
+    new Chart(document.getElementById('volatilityChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: volatilityData.labels,
+        datasets: [{
+          label: 'Volatility (%)',
+          data: volatilityData.values,
+          backgroundColor: 'rgba(255, 99, 132, 0.5)'
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
