@@ -1,7 +1,36 @@
 
 @import "tailwindcss";
 
-:root {
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.light {
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #00c4cc, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -68,4 +97,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

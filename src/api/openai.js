@@ -67,6 +67,24 @@ class OpenAIClient {
     const prompt = `Optimize the following portfolio based on market data and the user's risk profile: ${riskProfile}. Suggest asset allocations and rebalancing actions.`;
     return this.analyzeMarketData({ portfolio, marketData }, prompt);
   }
+
+    // Method for general-purpose responses (used in server.js for /api/ai-prompt)
+    async generateResponse(context) {
+      try {
+        const response = await this.openai.chat.completions.create({
+          model: 'gpt-4o-mini',
+          messages: [
+            { role: 'system', content: 'You are an expert in blockchain, trading, and the stock market.' },
+            { role: 'user', content: context },
+          ],
+          max_tokens: 1000,
+          temperature: 0.7,
+        });
+        return response.choices[0].message.content;
+      } catch (err) {
+        throw new Error(`Failed to generate response from OpenAI: ${err.message}`);
+      }
+    }
 }
 
 module.exports = OpenAIClient;

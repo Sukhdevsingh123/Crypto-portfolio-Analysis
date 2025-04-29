@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
     "node-fetch": "^3.3.2",
     "openai": "^4.96.0",
     "path-to-regexp": "^8.2.0",
