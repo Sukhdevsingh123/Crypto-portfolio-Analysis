@@ -178,5 +178,5 @@ Licensed under the **MIT License**. See `LICENSE` for details.
 - Facebook 💼
 - LinkedIn 🔗
 
-> **Trade smarter with CryptoPulse AI! 🚀💸**
+> **Trade smarter with CryptoPulse AI! 🚀💸***
 
