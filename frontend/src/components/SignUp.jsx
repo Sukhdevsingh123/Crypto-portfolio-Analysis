@@ -10,13 +10,17 @@ function SignUp() {
   const [error, setError] = useState(null);
 
   const handleLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/login';
+    // window.location.href = 'http://localhost:5000/auth/login';
+    window.location.href = 'https://crypto-portfolio-komv.onrender.com/auth/login';
+
+   
   };
 
   const fetchAccount = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/account', { withCredentials: true });
+    //   const response = await axios.get('http://localhost:5000/api/account', { withCredentials: true });
+      const response = await axios.get('https://crypto-portfolio-komv.onrender.com/api/account', { withCredentials: true });
       setAccount(response.data);
       setError(null);
     } catch (err) {
