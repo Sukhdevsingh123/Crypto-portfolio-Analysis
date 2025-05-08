@@ -18,6 +18,8 @@ import {
   Legend,
 } from 'chart.js';
 import { ThemeContext } from '../components/ThemeContext';
+import TradeHistory from './Tradehistory'; // Make sure to create this file with the component above
+
 
 ChartJS.register(
   CategoryScale,
@@ -403,23 +405,27 @@ const Web3Verification = ({ insights, portfolio, positions, theme }) => {
   };
 
   return (
-    <div className={`shadow-lg rounded-lg p-6 mt-6 overflow-hidden transition-all duration-300 hover:shadow-xl ${theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-900'}`}>
+    <div className={`shadow-lg rounded-lg p-6 mt-6 transition-all duration-300 hover:shadow-xl ${theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-900'}`}>
       <h2 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`}>Portfolio Optimization Progress</h2>
       <p className={`text-sm mb-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Progress towards suggested allocation</p>
-      <div className="max-w-xs mx-auto h-72">
-        <Pie
-          data={chartData}
-          options={{
-            maintainAspectRatio: false,
-            cutout: '80%',
-            plugins: {
-              legend: { display: false },
-              tooltip: { enabled: false },
-            },
-            animation: { animateRotate: true, animateScale: true, duration: 1000 },
-          }}
-        />
-        <div className="text-center mt-2">
+      <div className="w-full h-64 relative"> {/* Changed to relative positioning and fixed height */}
+        <div className="absolute inset-0 flex items-center justify-center"> {/* Centering container */}
+          <div className="w-64 h-64"> {/* Fixed dimensions for chart container */}
+            <Pie
+              data={chartData}
+              options={{
+                maintainAspectRatio: false,
+                cutout: '80%',
+                plugins: {
+                  legend: { display: false },
+                  tooltip: { enabled: false },
+                },
+                animation: { animateRotate: true, animateScale: true, duration: 1000 },
+              }}
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"> {/* Centered text overlay */}
           <p className={`text-2xl font-bold ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'}`}>{Math.round(progress)}%</p>
           <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Optimized</p>
         </div>
@@ -608,6 +614,9 @@ function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <WeeklyActivity insights={data.insights} theme={theme} />
         <Web3Verification insights={data.insights} portfolio={data.portfolio} positions={data.account.positions} theme={theme} />
+      </div>
+      <div>
+      <TradeHistory theme={theme} />
       </div>
     </div>
   );
